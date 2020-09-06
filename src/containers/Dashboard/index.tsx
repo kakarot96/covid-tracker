@@ -3,7 +3,8 @@ import Header from '../../components/Header'
 import { Box } from '@material-ui/core'
 import CountryInfo from '../../components/CountryInfo'
 import {Country} from './Country'
-
+import CountriesTable from '../../components/CountriesTable'
+import {sortData} from '../../utils'
 function Dashboard() {
     const [countryInfo,setCountryInfo]:any = useState();
     const [countries,setCountries] = useState([]);
@@ -16,8 +17,8 @@ function Dashboard() {
                 const countries = data.map((countryData:any)=>{
                     return new Country(countryData)
                 })
-                // console.log(countries)
-                setCountries(countries)
+                const sortedData:any = sortData(countries)
+                setCountries(sortedData)
             })
         }
         getCountries()
@@ -39,8 +40,8 @@ function Dashboard() {
         })
     }
     return (
-        <Box p={1.5} display='flex'>
-            <Box flex={.6}>
+        <Box p={1.5} display='flex' className='app' justifyContent='space-between'>
+            <Box flex={.8}>
             <Header onCountryChange={onCountryChange} countries={countries}/>
             {
                 countryInfo &&
@@ -52,7 +53,7 @@ function Dashboard() {
             }
             </Box>
             <Box>
-
+            <CountriesTable countries={countries}/>
             </Box>
         </Box>
     )

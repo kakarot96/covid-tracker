@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, Card, CardContent } from '@material-ui/core'
+import { Typography, Card, CardContent } from '@material-ui/core'
 interface CountryInfoProps{
     title:string,
     todayData:number,
