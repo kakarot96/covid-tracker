@@ -1,7 +1,7 @@
 export class Country{
     constructor(data){
         this.name = data.country;
-        this.code = data.countryInfo.iso3;
+        this.code = data.countryInfo.iso2;
         this.cases = data.cases;
         this.deaths = data.deaths;
         this.recovered = data.recovered;
