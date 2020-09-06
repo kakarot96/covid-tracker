@@ -1,9 +1,10 @@
 import React from 'react';
+import Dashboard from './containers/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      COVID Tracker
+      <Dashboard/>
     </div>
   );
 }
