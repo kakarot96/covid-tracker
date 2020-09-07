@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import { Box } from '@material-ui/core'
 import CountryInfo from '../../components/CountryInfo'
-import {Country} from './Country'
 import CountriesTable from '../../components/CountriesTable'
 import {sortData} from '../../utils'
+import LineGraph from '../../components/LineGraph'
 function Dashboard() {
     const [countryInfo,setCountryInfo]:any = useState();
     const [countries,setCountries] = useState([]);
@@ -15,7 +15,7 @@ function Dashboard() {
             .then(response=>response.json())
             .then(data=>{
                 const countries = data.map((countryData:any)=>{
-                    return new Country(countryData)
+                    return countryData
                 })
                 const sortedData:any = sortData(countries)
                 setCountries(sortedData)
@@ -23,6 +23,7 @@ function Dashboard() {
         }
         getCountries()
     }, [])
+
     useEffect(() => {
         fetch('https://disease.sh/v3/covid-19/all')
         .then(response=>response.json())
@@ -30,13 +31,13 @@ function Dashboard() {
             setCountryInfo(data)
         })
     }, [])
+
     const onCountryChange = async (countryCode:any)=>{
         const url = countryCode==='worldwide'? "https://disease.sh/v3/covid-19/all"
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
         await fetch(url).then(response=>response.json())
         .then(data=>{
-            let countryInfo = new Country(data)
-            setCountryInfo(countryInfo)
+            setCountryInfo(data)
         })
     }
     return (
@@ -54,6 +55,7 @@ function Dashboard() {
             </Box>
             <Box>
             <CountriesTable countries={countries}/>
+            <LineGraph/>
             </Box>
         </Box>
     )

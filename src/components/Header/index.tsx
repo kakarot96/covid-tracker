@@ -24,7 +24,7 @@ function Header(props:any) {
                         <MenuItem value='worldwide'>Worldwide</MenuItem>
                         {
                             props.countries!==undefined && props.countries.map((country:any,index:number)=>(
-                            <MenuItem value={country.code}>{country.name}</MenuItem>
+                            <MenuItem key={index} value={country.countryInfo.iso2}>{country.country}</MenuItem>
                             ))
                         }    
                     </Select>

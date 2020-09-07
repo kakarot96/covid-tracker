@@ -39,7 +39,7 @@ const useStyles = makeStyles({
       minWidth: 250
     },
     tableContainerRoot:{
-        height:400
+        height:300
     }
   });
 function CountriesTable(props:any) {
@@ -59,9 +59,9 @@ function CountriesTable(props:any) {
 
                         <TableBody>
                         {props.countries.map((country:any,index:number) => (
-                            <StyledTableRow key={country.name}>
+                            <StyledTableRow key={country.country}>
                             <StyledTableCell component="th" scope="row">
-                                {country.name}
+                                {country.country}
                             </StyledTableCell>
                             <StyledTableCell align="right">{country.cases}</StyledTableCell>
                             </StyledTableRow>
