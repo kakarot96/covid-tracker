@@ -45,32 +45,30 @@ const useStyles = makeStyles({
 function CountriesTable(props:any) {
     const classes = useStyles();
     return (
-        <Card>
-            <CardContent>
-                <Typography variant='h6'>Live Cases by Country</Typography>
-                <TableContainer component={Paper} classes={{root:classes.tableContainerRoot}}>
-                    <Table className={classes.table} aria-label="customized table">
-                        <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Country</StyledTableCell>
-                            <StyledTableCell align="right">Cases</StyledTableCell>
-                        </TableRow>
-                        </TableHead>
+        <>
+          <Typography variant='h6'>Live Cases by Country</Typography>
+          <TableContainer component={Paper} classes={{root:classes.tableContainerRoot}}>
+              <Table className={classes.table} aria-label="customized table">
+                  <TableHead>
+                  <TableRow>
+                      <StyledTableCell>Country</StyledTableCell>
+                      <StyledTableCell align="right">Cases</StyledTableCell>
+                  </TableRow>
+                  </TableHead>
 
-                        <TableBody>
-                        {props.countries.map((country:any,index:number) => (
-                            <StyledTableRow key={country.country}>
-                            <StyledTableCell component="th" scope="row">
-                                {country.country}
-                            </StyledTableCell>
-                            <StyledTableCell align="right">{country.cases}</StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </CardContent>
-        </Card>
+                  <TableBody>
+                  {props.countries.map((country:any,index:number) => (
+                      <StyledTableRow key={country.country}>
+                      <StyledTableCell component="th" scope="row">
+                          {country.country}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">{country.cases}</StyledTableCell>
+                      </StyledTableRow>
+                  ))}
+                  </TableBody>
+              </Table>
+          </TableContainer>
+        </>
     )
 }
 

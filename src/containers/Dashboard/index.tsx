@@ -5,9 +5,14 @@ import CountryInfo from '../../components/CountryInfo'
 import CountriesTable from '../../components/CountriesTable'
 import {sortData} from '../../utils'
 import LineGraph from '../../components/LineGraph'
+import Map from '../../components/Map'
+import { Card, CardContent, Typography } from '@material-ui/core';
+
 function Dashboard() {
     const [countryInfo,setCountryInfo]:any = useState();
     const [countries,setCountries] = useState([]);
+    const [mapPosition,setMapPosition]:any = useState([29.5321,75.031]);
+    const [mapZoom,setMapZoom] = useState(2);
     
     useEffect(() => {
         const getCountries = async ()=>{
@@ -37,12 +42,20 @@ function Dashboard() {
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
         await fetch(url).then(response=>response.json())
         .then(data=>{
-            setCountryInfo(data)
+            setCountryInfo(data);
+            if(countryCode==='worldwide'){
+                setMapPosition([50,50])
+                setMapZoom(1)
+            }
+            else{
+                setMapZoom(4)
+                setMapPosition([data.countryInfo.lat,data.countryInfo.long])
+            }
         })
     }
     return (
         <Box p={1.5} display='flex' className='app' justifyContent='space-between'>
-            <Box flex={.8}>
+            <Box flex={.8} display='flex' flexDirection='column'>
             <Header onCountryChange={onCountryChange} countries={countries}/>
             {
                 countryInfo &&
@@ -52,10 +65,15 @@ function Dashboard() {
                     <CountryInfo title='Deaths' todayData={countryInfo.todayDeaths} totalData={countryInfo.deaths}/>
                 </Box>
             }
+            <Map mapPosition={mapPosition} zoom={mapZoom} countries={countries}/>
             </Box>
             <Box>
-            <CountriesTable countries={countries}/>
-            <LineGraph/>
+            <Card>
+                <CardContent>
+                <CountriesTable countries={countries}/>
+                <LineGraph/>
+                </CardContent>
+            </Card>
             </Box>
         </Box>
     )

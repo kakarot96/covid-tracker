@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Line} from 'react-chartjs-2';
 import numeral from "numeral";
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 
 const options = {
     legend: {
@@ -75,7 +75,8 @@ function LineGraph(props:any) {
         getData();
     }, [])
     return (
-        <Box my={2}>
+        <Box mt ={2} bgcolor='white'>
+          <Typography variant='h6'>Worldwide New Cases</Typography>
             {chartData && <Line 
             data={{
                 datasets:[
