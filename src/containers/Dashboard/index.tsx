@@ -60,12 +60,16 @@ function Dashboard() {
             {
                 countryInfo &&
                 <Box display='flex' justifyContent='space-between'>
-                    <CountryInfo title='Coronavirus Cases' todayData={countryInfo.todayCases} totalData={countryInfo.cases}/>
-                    <CountryInfo title='Recovered' todayData={countryInfo.todayRecovered} totalData={countryInfo.recovered}/>
-                    <CountryInfo title='Deaths' todayData={countryInfo.todayDeaths} totalData={countryInfo.deaths}/>
+                    <CountryInfo type='cases' title='Confirmed Cases' todayData={countryInfo.todayCases} totalData={countryInfo.cases}/>
+                    <CountryInfo type='recovered' title='Recovered' todayData={countryInfo.todayRecovered} totalData={countryInfo.recovered}/>
+                    <CountryInfo type='deaths' title='Deaths' todayData={countryInfo.todayDeaths} totalData={countryInfo.deaths}/>
                 </Box>
             }
-            <Map mapPosition={mapPosition} zoom={mapZoom} countries={countries}/>
+            <Card style={{marginTop:'16px'}}>
+                <CardContent style={{paddingBottom:'16px'}}>
+                    <Map mapPosition={mapPosition} zoom={mapZoom} countries={countries}/>
+                </CardContent>
+            </Card>
             </Box>
             <Box>
             <Card>
