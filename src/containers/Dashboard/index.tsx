@@ -55,7 +55,7 @@ function Dashboard() {
     }
     return (
         <Box p={1.5} display='flex' className='app' justifyContent='space-between'>
-            <Box flex={.8} display='flex' flexDirection='column'>
+            <Box flex={.9} display='flex' flexDirection='column'>
             <Header onCountryChange={onCountryChange} countries={countries}/>
             {
                 countryInfo &&

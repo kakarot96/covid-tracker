@@ -12,7 +12,7 @@ function MapContainer(props:any) {
     const position:any = [state.lat, state.lng]
     const theme= useTheme()
     return (
-        <Box id='map' flex='auto' style={{height:'300px',minHeight:'300px'}}>
+        <Box id='map' flex='auto' style={{height:'400px',minHeight:'400px'}}>
             <Map center={props.mapPosition} zoom={props.zoom} style={{height:'100%'}}>
                 <TileLayer attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
