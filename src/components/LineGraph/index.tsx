@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {Line} from 'react-chartjs-2';
 import numeral from "numeral";
+import { Box } from '@material-ui/core';
 
 const options = {
     legend: {
@@ -11,7 +12,7 @@ const options = {
         radius: 0,
       },
     },
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     tooltips: {
       mode: "index",
       intersect: false,
@@ -37,7 +38,6 @@ const options = {
             display: false,
           },
           ticks: {
-            // Include a dollar sign in the ticks
             callback: function (value:any, index:any, values:any) {
               return numeral(value).format("0a");
             },
@@ -75,7 +75,7 @@ function LineGraph(props:any) {
         getData();
     }, [])
     return (
-        <div>
+        <Box my={2}>
             {chartData && <Line 
             data={{
                 datasets:[
@@ -88,7 +88,7 @@ function LineGraph(props:any) {
             }}
             options={options} 
             />}
-        </div>
+        </Box>
     )
 }
 
