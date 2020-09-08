@@ -15,7 +15,7 @@ function Header(props:any) {
             </Box>
             <Box>
                 <FormControl>
-                    <Select
+                    <Select style={{backgroundColor:'white', padding:'4px', border:'1px solid grey'}}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={country}
